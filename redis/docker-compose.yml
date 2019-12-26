@@ -1,0 +1,18 @@
+version: '3'
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    command: --appendonly yes
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis_data:/data
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.100
+
+networks:
+  wdk:
+    external: true

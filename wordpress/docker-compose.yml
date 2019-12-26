@@ -1,0 +1,21 @@
+version: '3'
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress #容器名称
+    restart: "always" #重启策略，能够使服务保持始终运行，生产环境推荐使用
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: 192.168.1.99:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root1234
+
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.200
+
+networks:
+  wdk:
+    external: true

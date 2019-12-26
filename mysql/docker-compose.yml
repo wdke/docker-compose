@@ -1,0 +1,28 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql57
+    restart: always
+    ports:
+      - 3306:3306
+      - 33060:33060
+
+
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_USER: wdke
+      MYSQL_PASS: wdke1234
+
+
+    volumes:
+      - ./db:/var/lib/mysql
+      #- ./conf/my.cnf:/etc/my.cnf
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.99
+
+networks:
+  wdk:
+    external: true
