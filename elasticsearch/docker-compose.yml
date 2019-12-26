@@ -1,0 +1,20 @@
+version: '3'
+services:
+  elasticsearch:
+    image: elasticsearch:6.4.0
+    container_name: elasticsearch
+    environment:
+      - "cluster.name=elasticsearch" #设置集群名称为elasticsearch
+      - "discovery.type=single-node" #以单一节点模式启动
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" #设置使用jvm内存大小
+    volumes:
+      - ./plugins:/usr/share/elasticsearch/plugins #插件文件挂载
+      - ./data:/usr/share/elasticsearch/data #数据文件挂载
+    ports:
+      - 9200:9200
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.14
+networks:
+  wdk:
+    external: true

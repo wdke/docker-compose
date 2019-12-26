@@ -1,0 +1,17 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+    volumes:
+      -./data:/var/lib/rabbitmq #数据文件挂载
+      - ./log:/var/log/rabbitmq #日志文件挂载
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.13
+networks:
+  wdk:
+    external: true

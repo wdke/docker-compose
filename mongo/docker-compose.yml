@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:3.2
+    container_name: mongo
+    volumes:
+      - ./db:/data/db #数据文件挂载
+    ports:
+      - 27017:27017
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.16
+networks:
+  wdk:
+    external: true

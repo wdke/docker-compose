@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b177ec9-d445-4b20-8f89-7048766ab023" name="Default Changelist" comment="" />
+    <list default="true" id="2b177ec9-d445-4b20-8f89-7048766ab023" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/all/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/all/mail.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elasticsearch/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kibana/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mongo/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rabbitmq/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redis/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/redis/docker-compose.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -18,6 +32,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1VVEkhjaVVJmGZO2SJXT26SEJ6J" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -27,10 +42,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mongo" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mongo" />
+      <recent name="$PROJECT_DIR$/kibana" />
+      <recent name="$PROJECT_DIR$/elasticsearch" />
+      <recent name="$PROJECT_DIR$/rabbitmq" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="Application" factoryName="Application">
@@ -79,7 +103,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1577330006164</updated>
-      <workItem from="1577330007794" duration="291000" />
+      <workItem from="1577330007794" duration="639000" />
+      <workItem from="1577336471446" duration="1439000" />
     </task>
     <servers />
   </component>
