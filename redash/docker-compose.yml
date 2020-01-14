@@ -1,0 +1,58 @@
+version: '2'
+services:
+  server:
+    image: redash/redash:5.0.0.b4754
+    container_name: redash_server
+    command: server
+    ports:
+      - "5000:5000"
+    environment:
+      PYTHONUNBUFFERED: 0
+      REDASH_LOG_LEVEL: "INFO"
+      REDASH_REDIS_URL: "redis://redis:6379/0"
+      REDASH_DATABASE_URL: "postgresql://postgres@postgres/postgres"
+      REDASH_COOKIE_SECRET: veryverysecret
+      REDASH_WEB_WORKERS: 4
+
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.7
+  worker:
+    image: redash/redash:5.0.0.b4754
+    container_name: redash_worker
+    command: scheduler
+    environment:
+      PYTHONUNBUFFERED: 0
+      REDASH_LOG_LEVEL: "INFO"
+      REDASH_REDIS_URL: "redis://redis:6379/0"
+      REDASH_DATABASE_URL: "postgresql://postgres@postgres/postgres"
+      QUEUES: "queries,scheduled_queries,celery"
+      WORKERS_COUNT: 2
+
+
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.8
+
+  click:
+     image: yandex/clickhouse-server
+     container_name: redash_click
+     ports:
+     - "8123:8123"
+     - "9000:9000"
+     - "9009:9009"
+     ulimits:
+      nproc: 65535
+      nofile:
+       soft: 262144
+       hard: 262144
+
+
+     networks:
+       wdk:
+         ipv4_address: 192.168.1.9
+
+
+networks:
+  wdk:
+    external: true

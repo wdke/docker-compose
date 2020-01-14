@@ -4,7 +4,8 @@ services:
     image: redis:latest
     container_name: redis
     restart: always
-    command: --appendonly yes
+#    command: --appendonly yes
+    command: redis-server --port 6379 --requirepass wdke@1216.com  --appendonly yes
     ports:
       - 6379:6379
     volumes:

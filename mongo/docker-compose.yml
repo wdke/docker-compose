@@ -2,7 +2,7 @@ version: '3'
 services:
   mongo:
     image: mongo:3.2
-    container_name: mongo
+    container_name: mongodb
     volumes:
       - ./db:/data/db #数据文件挂载
     ports:
