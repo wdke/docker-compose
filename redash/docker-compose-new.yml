@@ -1,0 +1,78 @@
+version: '2'
+services:
+  server:
+    image: redash/redash
+    container_name: redash_server
+    command: server
+    ports:
+      - "5000:5000"
+      - "5678:5678"
+    volumes:
+      - ".:/app"
+    environment:
+      PYTHONUNBUFFERED: 0
+      REDASH_LOG_LEVEL: "INFO"
+      REDASH_REDIS_URL: "redis://redis:6379/0"
+      REDASH_DATABASE_URL: "postgresql://postgres@postgres/postgres"
+      REDASH_RATELIMIT_ENABLED: "false"
+      REDASH_MAIL_DEFAULT_SENDER: redash@example.com
+      REDASH_MAIL_SERVER: email
+
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.7
+
+  scheduler:
+    image: redash/redash
+    container_name: redash_scheduler
+    command: scheduler
+    volumes:
+      - type: "bind"
+        source: .
+        target: "/app"
+    depends_on:
+      - server
+
+    environment:
+      REDASH_REDIS_URL: "redis://redis:6379/0"
+      REDASH_MAIL_DEFAULT_SENDER: redash@example.com
+      REDASH_MAIL_SERVER: email
+
+  worker:
+    image: redash/redash
+    container_name: redash_worker
+    command: worker
+    volumes:
+      - type: "bind"
+        source: .
+        target: "/app"
+    depends_on:
+      - server
+    environment:
+      PYTHONUNBUFFERED: 0
+      REDASH_LOG_LEVEL: "INFO"
+      REDASH_REDIS_URL: "redis://redis:6379/0"
+      REDASH_DATABASE_URL: "postgresql://postgres@postgres/postgres"
+      REDASH_MAIL_DEFAULT_SENDER: redash@example.com
+      REDASH_MAIL_SERVER: email
+
+
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.8
+
+  email:
+    image: djfarrelly/maildev
+    ports:
+      - "1080:80"
+    restart: always
+
+
+    networks:
+      wdk:
+        ipv4_address: 192.168.1.222
+
+
+networks:
+  wdk:
+    external: true

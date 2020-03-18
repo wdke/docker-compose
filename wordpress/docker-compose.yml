@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      WORDPRESS_DB_HOST: 192.168.1.99:3306
+      WORDPRESS_DB_HOST: 192.168.1.12:3306
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: root1234
